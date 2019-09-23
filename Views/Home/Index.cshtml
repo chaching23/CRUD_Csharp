@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model List<User>
+<a href="/new" style="float:right;">Add a user!</a>
+<h2>Welcome to CRUDelicious!</h2>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>Name</th>
+            <th>Chef</th>
+            <th>Taste</th>
+            <th>Calories</th>
+            <th>Description</th>
+            <th>Created At</th>
+            <th>Updated At</th>
+            <th>Actions</th>
+
+        </tr>
+    </thead>
+    <tbody>
+    @foreach(var user in Model)
+    {
+        <tr>
+            <td><a asp-action="Show" asp-route-userId="@user.UserId">@user.Name</a></td>
+            <td>@user.Chef</td>
+            <td>@user.Taste</td>
+            <td>@user.Calories</td>
+            <td>@user.Description</td>
+            <td>@user.CreatedAt</td>
+            <td>@user.UpdatedAt</td>
+            <td><a href="/user/@user.UserId/delete">DELETE</a></td>
+        </tr>
+    }
+    </tbody>
+</table>
